@@ -124,7 +124,7 @@ function doCollide(a, b) { // a and b are your objects
         (aLeft > (bLeft + b.width()))
     );
 }
-
+var tree;
 var bst = new BinarySearchTree();
 $(function(){
     $("#insert-button").click(function(){
@@ -138,37 +138,54 @@ $(function(){
 
         // ************** Generate the tree diagram	 *****************
         var margin = {top: 20, right: 120, bottom: 20, left: 120},
-            width = $(window).width() * 2,
+            width = $(window).width() * 3,
             height = $(window).height();
+        
             
         var i = 0,
             duration = 750,
             root;
 
-        var tree = d3.layout.tree()
-            .size([height, width]);
+        tree = d3.layout.tree();
 
         var diagonal = d3.svg.diagonal()
             .projection(function(d) { return [d.x, d.y]; });
 
         var svg = d3.select("#bst-container").append("svg")
-            .attr("width",width)
-            .attr("height",height)
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
         root = bst._json_data;
-        root.x0 = height / 2;
+        root.x0 = $(window).width() / 2;
         root.y0 = 0;
-        
+
+        // compute the new height
+        var levelWidth = [1];
+        var childCount = function(level, n) {
+            
+            if(n.children && n.children.length > 0) {
+                if(levelWidth.length <= level + 1) levelWidth.push(0);
+                
+                levelWidth[level+1] += n.children.length;
+                n.children.forEach(function(d) {
+                    childCount(level + 1, d);
+                });
+            }
+        };
+        childCount(0, root);  
+        var newWidth = d3.max(levelWidth) * 50; // 20 pixels per line  
+        tree.size([newWidth, height]);
+
         update(root);
 
         d3.select(self.frameElement).style("height", "500px");
 
+
         setTimeout(function(){
             $("svg").first().css({'height':$("g")[0].getBoundingClientRect().height + 200});
-            $("svg").first().css({'width':$("g")[0].getBoundingClientRect().width + 500});
-        },1000);
+            $("svg").first().css({'width':$("g")[0].getBoundingClientRect().width + 1000});
+            //$("svg").first().css({'left':$("g")[0].getBoundingClientRect().width / 2});
+        },750);
 
         function update(source) {
 
@@ -177,7 +194,9 @@ $(function(){
                 links = tree.links(nodes);
 
             // Normalize for fixed-depth.
-            nodes.forEach(function(d) { d.y = d.depth * 100; });
+            nodes.forEach(function(d) { d.y = d.depth * 50; });
+            // Normalize for fixed-depth.
+            //nodes.forEach(function(d) { d.y = d.depth * 100; });
 
             // Update the nodes…
             var node = svg.selectAll("g.node")
@@ -204,9 +223,9 @@ $(function(){
                 .attr("x", function(d) { return d.children || d._children ? -30 : 0; })
                 .attr("font-size", function(d) { 
                     if(d.name === "null"){
-                        return 15;
+                        return 0;
                     } else {
-                        return 20;
+                        return 15;
                     }
                 })
                 .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
@@ -226,7 +245,7 @@ $(function(){
                 .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
 
             nodeUpdate.select("circle")
-                .attr("r", 20)
+                .attr("r", 5)
                 .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
 
             nodeUpdate.select("text")
@@ -282,7 +301,10 @@ $(function(){
                 d.x0 = d.x;
                 d.y0 = d.y;
             });
+
         }
+
+        //tree.size([$(window).height(), $(window).width() * 3]);
 
         // Toggle children on click.
         function click(d) {
