@@ -25,14 +25,15 @@ class BinarySearchTree {
     preOrderTraverse(node){
         if (node){
             this._traverse_result[this._traverse_result.length] = node;
+
             //traverse the left subtree
             if (node.left !== null){
-                this.inOrderTraverse(node.left);
+                this.preOrderTraverse(node.left);
             }            
 
             //traverse the right subtree
             if (node.right !== null){
-                this.inOrderTraverse(node.right);
+                this.preOrderTraverse(node.right);
             }
         }
     }
@@ -41,11 +42,11 @@ class BinarySearchTree {
         if (node){
             //traverse the left subtree
             if (node.left !== null){
-                this.inOrderTraverse(node.left);
+                this.postOrderTraverse(node.left);
             }            
             //traverse the right subtree
             if (node.right !== null){
-                this.inOrderTraverse(node.right);
+                this.postOrderTraverse(node.right);
             }
             this._traverse_result[this._traverse_result.length] = node;
         }
