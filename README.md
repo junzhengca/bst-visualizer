@@ -1,4 +1,7 @@
 # Binary Search Tree Visualizer
 Binary Search Tree Visualizer.
 
-Simple web based binary search tree visualizer.
+A simple web based binary search tree visualizer.
+
+===========================
+Licenced under Apache 2.0
