@@ -1,18 +1,16 @@
+<!--v1.0-stinouvolea-junthehacker-->
 <!doctype html>
 <html>
     <head>
         <meta charset="utf-8">
         <title>BST Visualizer</title>
         <link href="https://ssl.jackzh.com/file/css/bootstrap/bootstrap-3-3-6/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
-        <link href="less/main.less" type="text/less" rel="stylesheet" />
+        <link href="css/main.min.css?v=020ae074ec5f8669352342e0e44eb6861eb2e99f" type="text/css" rel="stylesheet" />
         <link href="https://ssl.jackzh.com/file/css/font-awesome-4.4.0/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
         <script src="https://ssl.jackzh.com/file/js/jquery/jquery-2.2.2.min.js"></script>
-        <script src="https://ssl.jackzh.com/file/js/less-js/less.min.js"></script>
         <script src="https://ssl.jackzh.com/file/js/greensock/greensock-js-1.18.0/src/minified/TweenMax.min.js"></script>
-        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-        <script src="js/processing.min.js" type="text/javascript"></script>
         <script src="https://d3js.org/d3.v3.min.js"></script>
-        <script src="js/app.js" type="text/babel"></script>
+        <script src="js/app.min.js?v=020ae074ec5f8669352342e0e44eb6861eb2e99f" type="text/javascript"></script>
     </head>
     <body>
         <div id="app-container">
