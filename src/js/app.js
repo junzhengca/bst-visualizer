@@ -136,6 +136,22 @@ var bst = new BinarySearchTree();
 var graph_scale = 1.0;
 
 
+function graphScaleUp(){
+    if(parseFloat(graph_scale) < 5){
+        graph_scale += 0.1;
+        $("#scale-by-textbox").val(graph_scale);
+        $("#insert-button").click();
+    }
+}
+
+function graphScaleDown(){
+    if(parseFloat(graph_scale) > 0.5){
+        graph_scale -= 0.1;
+        $("#scale-by-textbox").val(graph_scale);
+        $("#insert-button").click();
+    }
+}
+
 function updateBstVisual(){
     // ************** Generate the tree diagram	 *****************
     var margin = {top: 20, right: 120, bottom: 20, left: 120},
@@ -318,7 +334,7 @@ $(function(){
         $("#bst-container").html("");
         var split_by = $("#seperate-by-textbox").val();
         var values = $("#insert-textbox").val().split(split_by);
-        graph_scale = $("#scale-by-textbox").val();
+        graph_scale = parseFloat($("#scale-by-textbox").val());
         bst._root = null;
         bst._json_data = null;
         for(var i = 0; i < values.length; i++){
@@ -385,4 +401,5 @@ $(function(){
         $("svg").first().css({'height':$("g")[0].getBoundingClientRect().height + 200});
         $("svg").first().css({'width':$("g")[0].getBoundingClientRect().width + 1000});
     },10);
+
 });

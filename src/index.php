@@ -10,7 +10,6 @@
         <script src="https://ssl.jackzh.com/file/js/less-js/less.min.js"></script>
         <script src="https://ssl.jackzh.com/file/js/greensock/greensock-js-1.18.0/src/minified/TweenMax.min.js"></script>
         <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-        <script src="js/processing.min.js" type="text/javascript"></script>
         <script src="https://d3js.org/d3.v3.min.js"></script>
         <script src="js/app.js" type="text/babel"></script>
     </head>
@@ -19,7 +18,7 @@
             <div id="control-bar">
                 <br><br>
                 <h2>Binary Search Tree Visualizer</h2>
-                <span>© Jun Zheng (aka junthehacker, also aka 代码是什么东西) All Rights Reserved</span>
+                <span>© Jun Zheng (aka junthehacker) All Rights Reserved</span>
                 <br><br>
                 <input type="text" class="default-textbox" id="insert-textbox" placeholder="Enter Values Here" value="j,u,n,t,h,e,h,a,c,k,e,r" /><br><br>
                 <span>Use <code id="seperate-by-indicator">,</code> to seperate elements.</span><br><br>
@@ -39,6 +38,10 @@
                 <input type="text" class="default-textbox" id="seperate-by-textbox" placeholder="Enter Values Here" value="," /><br><br>
                 <span>Scale Graph By</span><br><br>
                 <input type="text" class="default-textbox" id="scale-by-textbox" placeholder="Enter Values Here" value="1.0" /><br><br>
+            </div>
+            <div id="scale-control-container">
+                <button onclick="graphScaleDown()" class="left"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                <button onclick="graphScaleUp()" class="right"><i class="fa fa-plus" aria-hidden="true"></i></button>
             </div>
         </div>
     </body>
