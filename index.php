@@ -11,6 +11,14 @@
         <script src="https://ssl.jackzh.com/file/js/greensock/greensock-js-1.18.0/src/minified/TweenMax.min.js"></script>
         <script src="https://d3js.org/d3.v3.min.js"></script>
         <script src="js/app.min.js?v=020ae074ec5f8669352342e0e44eb6861eb2e99f" type="text/javascript"></script>
+        <!--Begin Google AdSense-->
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-9243641995511635",
+            enable_page_level_ads: true
+          });
+        </script>
     </head>
     <body>
         <div id="app-container">
